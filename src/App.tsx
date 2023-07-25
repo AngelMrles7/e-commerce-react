@@ -1,10 +1,16 @@
+import { Footer } from './components/layouts/Footer/Footer';
+import { Navbar } from './components/layouts/Navbar/Navbar';
 import { Outlet } from 'react-router-dom';
 
 function App() {
 	return (
-		<main className='main'>
-			<Outlet />
-		</main>
+		<>
+			<Navbar />
+			<main className='main'>
+				<Outlet />
+			</main>
+			<Footer />
+		</>
 	);
 }
 
