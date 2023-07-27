@@ -1,0 +1,11 @@
+html,
+body {
+	font-family: var(--font-roboto);
+	position: relative;
+	overflow-x: hidden;
+}
+
+.main-section {
+	max-width: var(--max-width);
+	margin: 0 auto;
+}

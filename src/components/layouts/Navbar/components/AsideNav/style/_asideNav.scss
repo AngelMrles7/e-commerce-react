@@ -1,0 +1,134 @@
+@use '../../../../../../assets/sass/utils/mixins';
+
+.side-nav {
+	position: fixed;
+	display: flex;
+	top: 0;
+	bottom: 0;
+	z-index: 9999;
+	width: 80%;
+	background: var(--light-color);
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+	max-width: 414px;
+	transition: transform 0.5s ease-in-out;
+	overflow-x: hidden;
+	justify-content: flex-start;
+
+	&.left-panel {
+		left: 0;
+		transform: translateX(-100%);
+	}
+
+	&.right-panel {
+		right: 0;
+		transform: translateX(110vw);
+	}
+
+	&.open-panel {
+		-webkit-transform: translateX(0);
+		-ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+
+	&__container {
+		width: 100%;
+		min-width: 100%;
+		font-family: var(--font-roboto);
+		font-weight: 400;
+		z-index: 1;
+		overflow: hidden;
+		-webkit-transition: -webkit-transform 250ms ease-in-out;
+		-webkit-transition: transform 250ms ease-in-out;
+		transition: transform 250ms ease-in-out;
+	}
+
+	&__menu-header {
+		@include mixins.flex(row, center, space-between);
+		height: 61px;
+		padding: 15px 12px;
+		border-bottom: 2px solid var(--light-secondary-color);
+
+		&__title {
+			color: var(--secondary-color);
+
+			&--back {
+				@include mixins.flex(row, center, flex-start);
+				cursor: pointer;
+
+				&__icon {
+					width: 20px;
+					height: auto;
+					margin-right: 10px;
+
+					& svg {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+
+		&--btn-closed {
+			width: 30px;
+			height: auto;
+			color: var(--dark-color);
+			background-color: transparent;
+			cursor: pointer;
+
+			& svg {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
+	&__menu-body {
+		overflow-y: scroll;
+		overflow-x: hidden;
+		height: calc(100% - 50px);
+		margin-bottom: 60px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+	&__content {
+		font: var(--font-roboto-normal-300);
+		color: var(--dark-color);
+		padding: 18px 0 30px 0;
+
+		&__title {
+			padding: 6px 12px;
+			font-weight: 500;
+		}
+
+		&__showAll {
+			padding: 0 12px;
+
+			& > a {
+				display: block;
+				width: 100%;
+				padding: 12px 0;
+				font: var(--font-roboto-normal-500);
+				color: var(--primary-color);
+			}
+		}
+
+		&__item {
+			padding: 0 12px;
+
+			&__list {
+				@include mixins.flex(row, center, space-between);
+				height: 45px;
+				padding: 0 12px;
+				cursor: pointer;
+				& a {
+					width: 100%;
+					@include mixins.flex(row, center, space-between);
+					height: 40px;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

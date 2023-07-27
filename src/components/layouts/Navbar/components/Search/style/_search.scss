@@ -1,0 +1,34 @@
+@use '../../../../../../assets/sass/utils/mixins';
+
+.nav__search-bar__form {
+	height: 35px;
+	@include mixins.flex(row, center, center);
+	&__input {
+		width: 80%;
+		height: 100%;
+		padding: 8px;
+		border: 2px solid transparent;
+		border-radius: 5px 0 0 5px;
+		color: var(--dark-color);
+	}
+
+	&__input:focus,
+	&__input:active {
+		border-color: var(--secondary-color);
+		outline: none;
+	}
+
+	&__button {
+		height: 100%;
+		width: 45px;
+		background-color: var(--secondary-color);
+		color: var(--light-color);
+		border: none;
+		border-radius: 0 5px 5px 0;
+
+		& svg {
+			width: 30px;
+			height: 20px;
+		}
+	}
+}

@@ -1,0 +1,63 @@
+@use '../../../../../assets/sass/utils/mixins';
+
+.user-actions__popover {
+	position: absolute;
+	top: 40px;
+	right: -66px;
+	min-width: 210px;
+	background-color: var(--light-color);
+	padding: 15px;
+	border-radius: 5px;
+	visibility: hidden;
+	opacity: 0;
+	z-index: 9998;
+	transition: all 0.3s ease-out;
+
+	&::before {
+		content: '';
+		position: absolute;
+		right: 68px;
+		top: -10px;
+		width: 0;
+		height: 0;
+		border-width: 1px 10px 10px;
+		border-style: solid;
+		border-color: transparent transparent var(--light-color);
+	}
+
+	&__options {
+		&__item {
+			margin-bottom: 10px;
+
+			& > a {
+				display: inline-block;
+				width: 100%;
+				font: var(--font-roboto-normal-300);
+				transition: all 0.3s ease-out;
+				padding: 6px 2px;
+				&:hover {
+					color: var(--secondary-color);
+				}
+				border-radius: 2px;
+			}
+
+			&--logout-btn {
+				width: 100%;
+				@include mixins.flex(row, center, flex-start);
+				background-color: transparent;
+				font: var(--font-roboto-normal-300);
+				color: var(--dark-color);
+				transition: all 0.3s ease-out;
+				border-radius: 2px;
+
+				& svg {
+					margin-right: 5px;
+				}
+				&:hover {
+					background-color: var(--secondary-color-faded);
+					color: var(--light-color);
+				}
+			}
+		}
+	}
+}

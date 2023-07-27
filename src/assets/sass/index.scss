@@ -1,5 +1,20 @@
 /*  *******  Settings  *******  */
+@use './base/base';
+@use './base/reset';
+
+/*  *******  Utilities  *******  */
+
+@use './utils/variable';
+@use './utils/mixins';
 
 /*  ******* UI Components ******* */
+@use '../../components/InputField/inpurtField';
+@use '../../components/layouts/Navbar/styles/navbar';
 
-/*  *******  Components  *******  */
+/*  ******* layout Components ******* */
+@use '../../components/layouts/Navbar/components/Search/style/search';
+@use '../../components/layouts/Navbar/components/AsideNav/style/asideNav';
+@use '../../components/layouts/Navbar/components/UserActions/userActions';
+
+/*  *******  Page  *******  */
+@use '../../pages/Auth/SignIn/signIn';
