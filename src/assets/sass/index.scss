@@ -9,12 +9,13 @@
 
 /*  ******* UI Components ******* */
 @use '../../components/InputField/inpurtField';
-@use '../../components/layouts/Navbar/styles/navbar';
 
 /*  ******* layout Components ******* */
 @use '../../components/layouts/Navbar/components/Search/style/search';
 @use '../../components/layouts/Navbar/components/AsideNav/style/asideNav';
 @use '../../components/layouts/Navbar/components/UserActions/userActions';
+@use '../../components/layouts/Navbar/styles/navbar';
+@use '../../components/layouts/Footer/footer';
 
 /*  *******  Page  *******  */
 @use '../../pages/Auth/SignIn/signIn';
