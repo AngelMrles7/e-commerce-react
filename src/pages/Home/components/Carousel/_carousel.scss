@@ -1,0 +1,91 @@
+@use '../../../../assets/sass/utils/mixins';
+
+.carousel {
+	width: 100%;
+	height: 25vw;
+	max-height: 320px;
+	min-height: 135px;
+	position: relative;
+	overflow: hidden;
+
+	&__wrapp {
+		height: 100%;
+		position: relative;
+		overflow: hidden;
+	}
+
+	&__btn {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background: #f5f4f445;
+		border: none;
+		position: absolute;
+		@include mixins.flex(row, center, center);
+		cursor: pointer;
+
+		& svg {
+			font-size: 30px;
+			color: var(--primary-color);
+		}
+
+		&:hover {
+			transition: 0.3s;
+			background-color: var(--light-secondary-color);
+		}
+	}
+
+	&__dots {
+		position: absolute;
+		bottom: 5%;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+
+		& .dot {
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			margin: 0 5px;
+			cursor: pointer;
+			background: var(--light-secondary-color);
+
+			&.active {
+				background: var(--secondary-color-faded);
+			}
+		}
+	}
+}
+
+.slide {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	opacity: 0;
+	transition: opacity ease-in-out 0.8s;
+
+	& img {
+		// display: block;
+		width: 100%;
+		height: 100%;
+		-o-object-fit: cover;
+		object-fit: cover;
+		-o-object-position: top;
+		object-position: top;
+	}
+}
+
+.active-anim {
+	opacity: 1;
+}
+
+.prev {
+	top: 50%;
+	left: 20px;
+	transform: translateY(-60%);
+}
+.next {
+	top: 50%;
+	right: 20px;
+	transform: translateY(-60%);
+}
