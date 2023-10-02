@@ -2,44 +2,70 @@
 
 .side-nav {
 	position: fixed;
-	display: flex;
 	top: 0;
+	right: 0;
+	left: 0;
 	bottom: 0;
 	z-index: 9999;
-	width: 80%;
-	background: var(--light-color);
-	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-	max-width: 414px;
-	transition: transform 0.5s ease-in-out;
-	overflow-x: hidden;
-	justify-content: flex-start;
-
-	&.left-panel {
-		left: 0;
-		transform: translateX(-100%);
-	}
-
-	&.right-panel {
-		right: 0;
-		transform: translateX(110vw);
-	}
+	width: 100%;
+	visibility: hidden;
+	transition: visibility 200ms;
 
 	&.open-panel {
-		-webkit-transform: translateX(0);
-		-ms-transform: translateX(0);
-		transform: translateX(0);
+		visibility: visible;
+
+		& .side-nav__overlay {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		& .side-nav__container {
+			&.left-panel {
+				transform: translate3d(0, 0, 0);
+			}
+			&.right-panel {
+				transform: translate3d(0, 0, 0);
+			}
+		}
+	}
+
+	&__overlay {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		transition: opacity 200ms;
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+		opacity: 0;
+		visibility: hidden;
+		background: #323c47b1;
 	}
 
 	&__container {
+		position: absolute;
+		bottom: 0;
 		width: 100%;
-		min-width: 100%;
+		max-width: 400px;
+		height: 100%;
+		background: var(--light-color);
 		font-family: var(--font-roboto);
 		font-weight: 400;
 		z-index: 1;
 		overflow: hidden;
-		-webkit-transition: -webkit-transform 250ms ease-in-out;
-		-webkit-transition: transform 250ms ease-in-out;
-		transition: transform 250ms ease-in-out;
+		transition: transform 250ms;
+
+		&.left-panel {
+			left: 0;
+			-webkit-transform: translate3d(-100%, 0, 0);
+			transform: translate3d(-100%, 0, 0);
+		}
+
+		&.right-panel {
+			right: 0;
+			transform: translate3d(100vw, 0, 0);
+		}
 	}
 
 	&__menu-header {
@@ -50,6 +76,7 @@
 
 		&__title {
 			color: var(--secondary-color);
+			font-size: 20px;
 
 			&--back {
 				@include mixins.flex(row, center, flex-start);
@@ -57,7 +84,7 @@
 
 				&__icon {
 					width: 20px;
-					height: auto;
+					height: 20px;
 					margin-right: 10px;
 
 					& svg {
@@ -98,7 +125,7 @@
 		padding: 18px 0 30px 0;
 
 		&__title {
-			padding: 6px 12px;
+			padding: 10px 12px;
 			font-weight: 500;
 		}
 
@@ -115,18 +142,24 @@
 		}
 
 		&__item {
+			@include mixins.flex(row, center, flex-start);
+			height: 40px;
 			padding: 0 12px;
+			cursor: pointer;
 
-			&__list {
-				@include mixins.flex(row, center, space-between);
-				height: 45px;
-				padding: 0 12px;
-				cursor: pointer;
-				& a {
-					width: 100%;
-					@include mixins.flex(row, center, space-between);
-					height: 40px;
-					cursor: pointer;
+			& > .icon-left {
+				margin-right: 15px;
+				& > svg {
+					width: 25px;
+					height: 25px;
+				}
+			}
+
+			& > .icon-right {
+				margin-left: auto;
+				& > svg {
+					width: 25px;
+					height: 25px;
 				}
 			}
 		}

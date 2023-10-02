@@ -23,12 +23,13 @@ const AsideNav: React.FC<AsideNavProps> = ({
 	panelDirection = 'left',
 }) => {
 	return (
-		<aside
-			className={`side-nav ${
-				panelDirection === 'left' ? 'left-panel' : 'right-panel'
-			} ${openPanel ? 'open-panel' : ''}`}
-		>
-			<div className='side-nav__container'>
+		<aside className={`side-nav ${openPanel ? 'open-panel' : ''}`}>
+			<div className='side-nav__overlay' onClick={closePanel}></div>
+			<div
+				className={`side-nav__container ${
+					panelDirection === 'left' ? 'left-panel' : 'right-panel'
+				}`}
+			>
 				<div className='side-nav__menu-header'>
 					<span className='side-nav__menu-header__title'>
 						{changeTitle ? (

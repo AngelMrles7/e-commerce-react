@@ -2,9 +2,9 @@ import { LuChevronRight } from 'react-icons/lu';
 import { AsideNav, AsideNavContent, AsideNavItem } from '..';
 import { Link } from 'react-router-dom';
 import { CategoryInterface } from '../../../../../models';
-import React, { useEffect, useState } from 'react';
-import { createCategoriesAdapter } from '../../../../../adapters';
-import { Data } from '../../../../../data';
+import React, { useState } from 'react';
+import { useCategories } from '../../../../../services';
+
 interface NavigationProps {
 	openPanel: boolean;
 	closePanel: () => void;
@@ -14,23 +14,24 @@ export const Navigation: React.FC<NavigationProps> = ({
 	openPanel,
 	closePanel,
 }) => {
-	const [categories, setCategories] = useState<CategoryInterface[]>([]);
+	const { categoriesQuery } = useCategories();
+
 	const [selectedCategory, setSelectedCategory] =
 		useState<CategoryInterface | null>(null);
 
-	useEffect(() => {
-		const categoryData = createCategoriesAdapter(Data);
-		setCategories(categoryData);
-	}, []);
-
 	const handleGoBack = () => {
+		setSelectedCategory(null);
+	};
+
+	const close = () => {
+		closePanel();
 		setSelectedCategory(null);
 	};
 
 	return (
 		<AsideNav
 			openPanel={openPanel}
-			closePanel={closePanel}
+			closePanel={close}
 			title={'Menu'}
 			subtitle={'Volver al inicio'}
 			handleGoBack={handleGoBack}
@@ -38,43 +39,42 @@ export const Navigation: React.FC<NavigationProps> = ({
 			panelDirection='left'
 		>
 			<AsideNavContent
-				key={0}
-				contentTitle={'Category'}
-				showAll={selectedCategory ? 'Ver todos' : null}
-				selectedCategory={selectedCategory?.name}
+				contentTitle={selectedCategory ? selectedCategory?.name : ''}
 			>
+				{selectedCategory && (
+					<li className='side-nav__content__showAll'>
+						<Link
+							to={`/category/cat${selectedCategory.id}/ver-todas`}
+							onClick={closePanel}
+						>
+							ver todo
+						</Link>
+					</li>
+				)}
 				{selectedCategory !== null
 					? selectedCategory.subcategories.map(category => {
 							return (
 								<AsideNavItem key={category.id}>
-									<Link to={`/category/${category.name}`}>{category.name}</Link>
+									<Link
+										to={`/category/cat${
+											selectedCategory.id
+										}/${category.name.replace(/ /g, '-')}`}
+										onClick={close}
+									>
+										{category.name}
+									</Link>
 								</AsideNavItem>
 							);
 					  })
-					: categories?.map(category => {
-							return (
-								<AsideNavItem
-									key={category.id}
-									onClick={() => {
-										if (category.subcategories.length === 0) return '';
-										setSelectedCategory(category);
-									}}
-								>
-									{category.subcategories.length > 0 ? (
-										<>
-											<span>{category.name}</span>
-											<span>
-												<LuChevronRight />
-											</span>
-										</>
-									) : (
-										<Link to={`/category/${category.name}`}>
-											{category.name}
-										</Link>
-									)}
-								</AsideNavItem>
-							);
-					  })}
+					: categoriesQuery.data?.map(category => (
+							<AsideNavItem
+								key={category.id}
+								onClick={() => setSelectedCategory(category)}
+								rightIcon={<LuChevronRight />}
+							>
+								{category.name}
+							</AsideNavItem>
+					  ))}
 			</AsideNavContent>
 		</AsideNav>
 	);
