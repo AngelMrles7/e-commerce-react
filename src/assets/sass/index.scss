@@ -10,6 +10,9 @@
 /*  ******* UI Components ******* */
 @use '../../components/InputField/inpurtField';
 @use '../../pages/Home/components/Carousel/carousel';
+@use '../../components/Pagination/pagination';
+@use '../../pages/Detail/components/imageGallery';
+@use '../../components/Counter/counter';
 
 /*  ******* layout Components ******* */
 @use '../../components/layouts/Navbar/components/Search/style/search';
@@ -17,7 +20,12 @@
 @use '../../components/layouts/Navbar/components/UserActions/userActions';
 @use '../../components/layouts/Navbar/styles/navbar';
 @use '../../components/layouts/Footer/footer';
+@use '../../components/ProductCard/productCard';
 
 /*  *******  Page  *******  */
 @use '../../pages/Auth/SignIn/signIn';
+@use '../../pages/Auth/signUp/signUp';
 @use '../../pages/Home/homePage';
+@use '../../pages/Category/category';
+@use '../../pages/Category/components/AsideFilter/asideFilter';
+@use '../../pages/Detail/detail';

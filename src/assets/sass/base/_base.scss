@@ -5,6 +5,12 @@ body {
 	overflow-x: hidden;
 }
 
+#root {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+}
+
 .main-section {
 	max-width: var(--max-width);
 	margin: 0 auto;
