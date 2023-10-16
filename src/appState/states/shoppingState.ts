@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LocalStorageTypes, ProductInterface } from '../../models';
 import { getLocalStorage } from '../../utils';
 
-export interface CartItem extends ProductInterface {
+export interface CartItemInterface extends ProductInterface {
 	quantity: number;
 }
 
 export interface ShoppingState {
-	cart: CartItem[];
+	cart: CartItemInterface[];
 	totalItemsCart: number;
 }
 
@@ -38,13 +38,24 @@ export const shoppingStateSlice = createSlice({
 			}
 		},
 
-		incrementQuantity: (state, acttion: PayloadAction<ProductInterface>) => {
+		incrementQuantity: (state, action) => {
 			const itemInCart = state.cart.find(
-				product => product.id === acttion.payload.id
+				product => product.id === action.payload.product.id
 			);
 
-			if (itemInCart) {
-				itemInCart.quantity++;
+			// validate that the quantity doesn't exceed the stock of the product.
+			if (
+				action.payload.quantity <= action.payload.product.stock &&
+				action.payload.quantity > 0
+			) {
+				if (itemInCart) {
+					itemInCart.quantity = action.payload.quantity;
+				} else {
+					state.cart.push({
+						...action.payload.product,
+						quantity: action.payload.quantity,
+					});
+				}
 			}
 		},
 
@@ -89,9 +100,9 @@ export const shoppingStateSlice = createSlice({
 
 export const {
 	addToCart,
-	incrementQuantity,
 	decrementQuantity,
 	removeItem,
+	incrementQuantity,
 	getCartCount,
 } = shoppingStateSlice.actions;
 export default shoppingStateSlice.reducer;
