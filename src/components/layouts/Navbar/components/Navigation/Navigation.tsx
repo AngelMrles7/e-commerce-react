@@ -44,7 +44,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 				{selectedCategory && (
 					<li className='side-nav__content__showAll'>
 						<Link
-							to={`/category/cat${selectedCategory.id}/ver-todas`}
+							to={`/category/cat${selectedCategory.id}`}
 							onClick={closePanel}
 						>
 							ver todo
