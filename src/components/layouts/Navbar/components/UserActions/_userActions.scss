@@ -11,12 +11,13 @@
 	visibility: hidden;
 	opacity: 0;
 	z-index: 9998;
-	transition: all 0.3s ease-out;
+	transition: all 0.3s ease;
+	pointer-events: none;
 
 	&::before {
 		content: '';
 		position: absolute;
-		right: 68px;
+		right: 74px;
 		top: -10px;
 		width: 0;
 		height: 0;

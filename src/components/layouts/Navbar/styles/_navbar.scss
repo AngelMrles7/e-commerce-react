@@ -57,7 +57,7 @@
 			padding: 0;
 			cursor: pointer;
 			color: var(--light-color);
-
+			margin: 6px;
 			& svg {
 				width: 25px;
 				height: auto;
@@ -68,6 +68,8 @@
 			& .user-actions__popover {
 				visibility: visible;
 				opacity: 1;
+				top: 35px;
+				pointer-events: auto;
 			}
 		}
 	}
