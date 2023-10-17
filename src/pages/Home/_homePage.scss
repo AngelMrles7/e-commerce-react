@@ -1,1 +1,10 @@
-
+.main-section {
+	&__products {
+		margin: 40px 2% 0px;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+		grid-auto-rows: minmax(100px, auto);
+		justify-items: center;
+		gap: 40px 0px;
+	}
+}
