@@ -7,10 +7,10 @@ export interface ProductInterface {
 	description: string;
 	image: string;
 	features: string;
-	precie: number;
+	price: string;
+	discount_price: number;
 	stock: number;
-	guarantee: string;
-	status_name: Status;
-	brand_name: number;
-	category_name: number;
+	discount: string;
+	status: Status;
+	brand: string;
 }
