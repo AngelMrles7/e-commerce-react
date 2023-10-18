@@ -1,0 +1,135 @@
+@use '../../assets/sass/utils/mixins';
+
+.detail-section {
+	margin: 0 2%;
+	&__content {
+		@include mixins.flex(row, normal, space-around);
+		margin: 30px 0;
+	}
+
+	&__description {
+		border: 2px solid #e9e9e9;
+		border-radius: 10px;
+		padding: 25px 20px;
+		margin-bottom: 20px;
+
+		&__subtitle {
+			font: var(--font-roboto-normal-500);
+			font-size: 2rem;
+			color: var(--secondary-color);
+			margin-bottom: 20px;
+		}
+
+		&__info {
+			font-size: 1.2rem;
+			color: var(--dark-color);
+		}
+	}
+}
+
+.product-detail {
+	width: 100%;
+	max-width: 550px;
+	border: 2px solid #e9e9e9;
+	padding: 25px 30px;
+	border-radius: 10px;
+
+	&__title {
+		margin-bottom: 25px;
+
+		&__brand {
+			margin-bottom: 15px;
+			font-size: 0.8em;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			color: var(--secondary-color);
+			display: flex;
+			justify-content: space-between;
+		}
+
+		&__code {
+			color: var(--primary-color);
+			font-size: 12px;
+			text-transform: lowercase;
+		}
+
+		&__name {
+			color: var(--dark-color);
+			font-size: 1.6em;
+			margin-bottom: 20px;
+		}
+
+		&__feature {
+			& > p {
+				font-size: 0.9em;
+				color: var(--dark-color);
+				white-space: break-spaces;
+			}
+		}
+	}
+
+	&__price {
+		@include mixins.flex(column, flex-start, space-between);
+		margin-bottom: 24px;
+
+		&__now {
+			@include mixins.flex(row, center, normal);
+			color: var(--secondary-color);
+			gap: 15px;
+			font-size: 1.6em;
+		}
+
+		&__discount {
+			background-color: var(--secondary-color);
+			font-size: 0.5em;
+			color: var(--light-color);
+			padding: 4px;
+			border-radius: 5px;
+		}
+
+		&__before {
+			color: var(--secondary-color-faded);
+			text-decoration: line-through;
+		}
+	}
+
+	&__action {
+		display: flex;
+		gap: 30px;
+
+		@media screen and (max-width: 370px) {
+			flex-direction: column;
+		}
+		&__add {
+			@include mixins.flex(row, center, center);
+			gap: 1rem;
+			width: 100%;
+			height: 45px;
+			font-size: 1em;
+			font-weight: 700;
+			background-color: var(--secondary-color);
+			border: none;
+			border-radius: 5px;
+			color: var(--light-color);
+
+			&:hover {
+				cursor: pointer;
+				opacity: 0.5;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 670px) {
+	.detail-section {
+		&__content {
+			flex-direction: column;
+			align-items: center;
+			row-gap: 20px;
+
+			& .product-detail {
+				max-width: none;
+			}
+		}
+	}
+}

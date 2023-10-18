@@ -1,0 +1,39 @@
+.counter {
+	display: flex;
+	height: auto;
+	border-radius: 4px;
+
+	& > input[type='text'] {
+		width: 60%;
+		padding: 0;
+		color: var(--dark-color);
+		font-size: 1rem;
+		font-weight: 700;
+		text-align: center;
+		line-height: 19.2px;
+		border: none;
+		background-color: transparent;
+		-moz-appearance: textfield;
+	}
+
+	&__decrement,
+	&__increase {
+		width: 28px;
+		height: auto;
+		background-color: var(--dark-color);
+		border-radius: 5px;
+		font-size: 1.2rem;
+		color: var(--light-color);
+		transition: all 0.3s ease;
+		&:hover {
+			cursor: pointer;
+			opacity: 0.7;
+		}
+
+		&:disabled {
+			color: var(--light-secondary-color);
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+	}
+}
