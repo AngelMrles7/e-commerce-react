@@ -8,11 +8,10 @@
 @use './utils/mixins';
 
 /*  ******* UI Components ******* */
-@use '../../components/InputField/inpurtField';
 @use '../../pages/Home/components/Carousel/carousel';
-@use '../../components/Pagination/pagination';
 @use '../../pages/Detail/components/imageGallery';
 @use '../../components/Counter/counter';
+@use '../../pages/ShoppingCart/components/CartItem/cartItem';
 
 /*  ******* layout Components ******* */
 @use '../../components/layouts/Navbar/components/Search/style/search';
@@ -23,9 +22,5 @@
 @use '../../components/ProductCard/productCard';
 
 /*  *******  Page  *******  */
-@use '../../pages/Auth/SignIn/signIn';
-@use '../../pages/Auth/signUp/signUp';
 @use '../../pages/Home/homePage';
-@use '../../pages/Category/category';
-@use '../../pages/Category/components/AsideFilter/asideFilter';
 @use '../../pages/Detail/detail';

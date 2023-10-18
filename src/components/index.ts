@@ -1,4 +1,5 @@
 export { default as Counter } from './Counter/Counter';
+export { default as InputField } from './InputField/InputField';
 export { default as ProductCard } from './ProductCard/ProductCard';
 export * from './layouts/Footer/Footer';
 export * from './layouts/Navbar/Navbar';
