@@ -1,0 +1,76 @@
+@use '../../assets/sass/utils/mixins';
+
+.category-section {
+	&__container {
+		max-width: var(--max-width);
+		width: 100%;
+		margin: 0 auto;
+		@include mixins.flex(row, normal, space-between);
+	}
+
+	&__display {
+		padding-right: 2%;
+		width: 80%;
+		&__pagination {
+			padding: 20px 0;
+			margin-bottom: 10px;
+			@include mixins.flex(row, center, space-between);
+
+			&__result {
+				color: var(--primary-color);
+				font-size: 0.9rem;
+			}
+
+			& .pagination {
+				@include mixins.flex(row, center, flex-end);
+				list-style: none;
+				margin-bottom: 12px;
+				gap: 5px;
+
+				& li {
+					cursor: pointer;
+					border-radius: 3px;
+					font-weight: 400;
+					border: 1px solid rgb(222, 217, 217);
+					& a {
+						@include mixins.flex(row, center, center);
+						width: 30px;
+						height: 30px;
+						text-align: center;
+						color: var(--primary-color);
+					}
+					&:hover {
+						background-color: var(--secondary-color);
+						color: var(--light-color);
+						transition: background-color 0.5s ease;
+						& a {
+							color: var(--light-color);
+						}
+					}
+
+					&.selected {
+						background-color: var(--secondary-color);
+						color: var(--light-color);
+						& a {
+							color: var(--light-color);
+						}
+					}
+
+					&.next {
+						transform: none;
+					}
+				}
+			}
+		}
+
+		&__content {
+			&__product-list {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+				grid-auto-rows: minmax(100px, auto);
+				justify-items: center;
+				gap: 40px 0px;
+			}
+		}
+	}
+}

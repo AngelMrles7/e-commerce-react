@@ -1,3 +1,4 @@
+export * from './Category';
 export { default as Detail } from './Detail/Detail';
 export { default as ImageGallery } from './Detail/components/ImageGallery';
 export { default as Home } from './Home/Home';

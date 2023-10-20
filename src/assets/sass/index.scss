@@ -19,7 +19,9 @@
 @use '../../components/layouts/Navbar/styles/navbar';
 @use '../../components/layouts/Footer/footer';
 @use '../../components/ProductCard/productCard';
+@use '../../pages/Category/components/AsideFilter/asideFilter';
 
 /*  *******  Page  *******  */
 @use '../../pages/Home/homePage';
 @use '../../pages/Detail/detail';
+@use '../../pages/Category/category';
