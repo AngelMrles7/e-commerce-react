@@ -20,8 +20,10 @@
 @use '../../components/layouts/Footer/footer';
 @use '../../components/ProductCard/productCard';
 @use '../../pages/Category/components/AsideFilter/asideFilter';
+@use '../../pages/ShoppingCart/components/CartItem/cartItem';
 
 /*  *******  Page  *******  */
 @use '../../pages/Home/homePage';
 @use '../../pages/Detail/detail';
 @use '../../pages/Category/category';
+@use '../../pages/ShoppingCart/shoppingCart';

@@ -1,0 +1,96 @@
+@use '../../../../assets/sass/utils/mixins';
+
+.cart-item {
+	@include mixins.flex(row, center, space-between);
+	padding: 10px 20px;
+	margin-bottom: 10px;
+	border: 1px solid rgb(222, 217, 217);
+
+	&__product {
+		@include mixins.flex(row);
+		width: 40%;
+
+		&__box {
+			text-align: center;
+			margin-right: 10%;
+			width: 25%;
+
+			& a {
+				color: var(--dark-color);
+				transition: all 0.3s ease;
+				& > img {
+					max-width: 100%;
+					max-height: 100%;
+					display: -webkit-box;
+					-webkit-line-clamp: 3;
+					-webkit-box-orient: vertical;
+				}
+
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+		}
+
+		&__info {
+			width: 60%;
+			height: 100%;
+			&__code {
+				color: var(--dark-color);
+				font-size: 0.7rem;
+				margin-bottom: 5px;
+			}
+			& a {
+				color: var(--dark-color);
+				transition: all 0.3s ease;
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+
+			&__name {
+				text-align: justify;
+				font-size: 0.9rem;
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+			}
+		}
+		&__price {
+			@include mixins.flex(column, flex-start);
+			row-gap: 5px;
+
+			&__discount {
+				text-decoration: line-through;
+				font-size: 0.9rem;
+				opacity: 0.6;
+			}
+
+			&__current {
+				@include mixins.flex(row, center);
+				column-gap: 15px;
+			}
+		}
+	}
+
+	&__option {
+		width: 20%;
+	}
+}
+
+@media (max-width: 600px) {
+	.cart-item {
+		flex-direction: column;
+		row-gap: 15px;
+
+		&__product {
+			justify-content: space-between;
+			width: 100%;
+		}
+
+		&__option {
+			width: 70%;
+		}
+	}
+}
