@@ -3,7 +3,7 @@ import { BASE_URL } from './api_config';
 import { createCategoriesAdapter } from '../adapters';
 
 const getCategories = async () => {
-	const response = await fetch(`${BASE_URL}categories`),
+	const response = await fetch(`${BASE_URL}categories/getCategories`),
 		json = await response.json();
 
 	if (!response.ok) {

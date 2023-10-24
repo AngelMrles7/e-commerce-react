@@ -3,7 +3,7 @@ import { BASE_URL } from './api_config';
 import { createProductsAdapter } from '../adapters';
 
 const getProducts = async () => {
-	const response = await fetch(`${BASE_URL}products`),
+	const response = await fetch(`${BASE_URL}products/getProducts`),
 		json = await response.json();
 
 	if (!response.ok) {
