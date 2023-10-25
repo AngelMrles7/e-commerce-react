@@ -1,5 +1,6 @@
 import { LuFacebook, LuInstagram } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
+import logo from '../../../assets/img/mylogo.png';
 
 export const Footer = () => {
 	return (
@@ -75,7 +76,7 @@ export const Footer = () => {
 				<div className='footer-section__social'>
 					<div className='footer-section__social__company-logo'>
 						{/* include the url where the logo of the company is located */}
-						<img src={''} alt='company logo' />
+						<img src={logo} alt='company logo' />
 					</div>
 					{/* include links to social networks */}
 					<ul className='footer-section__social__list'>

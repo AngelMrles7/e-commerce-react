@@ -1,3 +1,4 @@
+@use '../../../assets/sass/utils/mixins';
 .footer-section {
 	width: 100%;
 	height: auto;
@@ -46,14 +47,14 @@
 
 	&__social {
 		&__company-logo {
-			width: 80px;
-			height: 80px;
+			width: 75px;
+			height: auto;
 			margin: 0 auto;
 
 			& img {
 				width: 100%;
 				height: auto;
-				object-fit: fill;
+				object-fit: cover;
 			}
 		}
 
@@ -63,7 +64,7 @@
 
 			&__item {
 				& a {
-					display: inline-block;
+					@include mixins.flex(row, center, center);
 					width: 40px;
 					min-height: 40px;
 					background-color: rgba(255, 255, 255, 0.2);
@@ -73,6 +74,7 @@
 					line-height: 40px;
 					border-radius: 50%;
 					transition: all 0.5s ease;
+					font-size: 20px;
 					&:hover {
 						background-color: var(--secondary-color-faded);
 					}
@@ -98,6 +100,15 @@
 			&__list {
 				justify-content: center;
 			}
+		}
+	}
+}
+
+@media (max-width: 410px) {
+	.footer-section {
+		&__main-links {
+			flex-direction: column;
+			align-content: space-around;
 		}
 	}
 }

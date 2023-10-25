@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useAppSelector, useScreenSize } from '../../../hooks';
 import { Search, UserActions, UserActionsMobile } from './components';
 import { Navigation } from './components/Navigation/Navigation';
+import logo from '../../../assets/img/mylogo.png';
 
 export const Navbar = () => {
 	const totalItemsInCart = useAppSelector(
@@ -45,7 +46,7 @@ export const Navbar = () => {
 
 					<div className='nav__container__logo'>
 						{/* include the url where the logo of the company is located */}
-						<img alt='logo' src={''} />
+						<img alt='logo' src={logo} />
 					</div>
 				</div>
 
