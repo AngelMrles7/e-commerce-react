@@ -16,7 +16,7 @@ const Category = () => {
 
 	const { productQuery } = useProductFilter(
 		categoryId,
-		subcategoryName,
+		subcategoryName?.replace(/-/g, ' '),
 		selectedBrands,
 		page
 	);
