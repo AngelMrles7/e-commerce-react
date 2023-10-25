@@ -1,0 +1,41 @@
+.auth-section {
+	&__container {
+		width: 450px;
+		max-width: 100%;
+		height: auto;
+		margin: 70px auto;
+		padding: 2rem;
+		border: 1px solid var(--light-color);
+		border-radius: 8px;
+		box-shadow: 0px 0px 6px 0px var(--light-secondary-color);
+	}
+
+	.register-box {
+		margin: 50px auto;
+		width: 350px;
+		height: 520px;
+		border-radius: 15px;
+		background-color: #f4f4f4;
+		padding: 2% 3%;
+	}
+
+	&__title {
+		color: var(--primary-color);
+		text-align: center;
+		font-size: 25px;
+		margin-bottom: 18px;
+	}
+
+	&__signin-btn {
+		width: 100%;
+		height: 40px;
+		color: var(--light-color);
+		background-color: var(--primary-color);
+		border-radius: 5px;
+		cursor: pointer;
+
+		&:hover {
+			color: var(--light-secondary-color);
+		}
+	}
+}

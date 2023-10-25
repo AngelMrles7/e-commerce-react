@@ -3,6 +3,7 @@ import App from '../App';
 import { Home, Detail } from '../pages';
 import { Category } from '../pages/Category';
 import ShoppingCart from '../pages/ShoppingCart/ShoppingCart';
+import { SignIn, SignUp } from '../pages/Auth';
 
 export const router = createBrowserRouter([
 	{
@@ -27,5 +28,10 @@ export const router = createBrowserRouter([
 				element: <ShoppingCart />,
 			},
 		],
+	},
+
+	{
+		path: '/signup',
+		element: <SignUp />,
 	},
 ]);
