@@ -1,14 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../services';
+interface UserInterface {
+	email: string;
+	name: string;
+	user_id: number;
+}
 
 interface AuthStateInterface {
 	token: string | null;
+	user: UserInterface | {};
 	isLogin: boolean;
 	isLoading: boolean;
 }
 
 const initialState: AuthStateInterface = {
 	token: null,
+	user: {},
 	isLogin: false,
 	isLoading: false,
 };
@@ -37,7 +44,15 @@ export const loginUser = createAsyncThunk(
 const AuthStateSlice = createSlice({
 	name: 'Auth',
 	initialState,
-	reducers: {},
+	reducers: {
+		logout: state => {
+			localStorage.removeItem('auth'); // deletes token from storage
+			state.isLoading = false;
+			state.user = {};
+			state.token = null;
+			state.isLogin = false;
+		},
+	},
 	extraReducers(builder) {
 		builder
 			.addCase(loginUser.pending, (state: AuthStateInterface, action: any) => {
@@ -48,6 +63,7 @@ const AuthStateSlice = createSlice({
 				(state: AuthStateInterface, action: any) => {
 					state.isLoading = false;
 					state.isLogin = true;
+					state.user = action.payload.user;
 					state.token = action.payload.access_token;
 				}
 			)
@@ -55,8 +71,10 @@ const AuthStateSlice = createSlice({
 				state.isLoading = false;
 				state.isLogin = false;
 				state.token = null;
+				state.user = {};
 			});
 	},
 });
+export const { logout } = AuthStateSlice.actions;
 
 export default AuthStateSlice.reducer;

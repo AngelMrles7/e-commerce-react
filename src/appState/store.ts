@@ -10,11 +10,6 @@ const persistConfig = {
 	storage,
 };
 
-/* const persistanceMiddleware = state => next => action => {
-	next(action);
-	setLocalStorage(LocalStorageTypes.SHOPPINGCART, store.getState());
-}; */
-
 const rootReducer = combineReducers({
 	shoppingCart: shoppingStateSlice.reducer,
 	auth: AuthStateSlice,
