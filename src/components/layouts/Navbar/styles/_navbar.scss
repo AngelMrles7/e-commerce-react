@@ -35,6 +35,12 @@
 	height: auto;
 	background-color: transparent;
 	color: var(--light-color);
+	cursor: pointer;
+	border-radius: 5px;
+	transition: all 0.4s ease;
+	&:hover {
+		background-color: var(--secondary-color-faded);
+	}
 
 	& svg {
 		width: 100%;
