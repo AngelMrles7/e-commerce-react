@@ -4,6 +4,13 @@ import { logout } from '../appState/states/AuthState';
 import { logoutRequest } from '../services';
 
 interface JwtPayload {
+	iss: string;
+	iat: number;
+	exp: number;
+	nbf: number;
+	jti: string;
+	sub: string;
+	prv: string;
 	rol_id: number;
 }
 

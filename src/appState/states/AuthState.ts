@@ -1,21 +1,25 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../services';
 interface UserInterface {
-	email: string;
-	name: string;
-	user_id: number;
+	email: string | null;
+	name: string | null;
+	user_id: number | null;
 }
 
 interface AuthStateInterface {
 	token: string | null;
-	user: UserInterface | {};
+	user: UserInterface;
 	isLogin: boolean;
 	isLoading: boolean;
 }
 
 const initialState: AuthStateInterface = {
 	token: null,
-	user: {},
+	user: {
+		email: null,
+		name: null,
+		user_id: null,
+	},
 	isLogin: false,
 	isLoading: false,
 };
@@ -48,7 +52,11 @@ const AuthStateSlice = createSlice({
 		logout: state => {
 			localStorage.removeItem('auth'); // deletes token from storage
 			state.isLoading = false;
-			state.user = {};
+			state.user = {
+				email: null,
+				name: null,
+				user_id: null,
+			};
 			state.token = null;
 			state.isLogin = false;
 		},
@@ -71,7 +79,11 @@ const AuthStateSlice = createSlice({
 				state.isLoading = false;
 				state.isLogin = false;
 				state.token = null;
-				state.user = {};
+				state.user = {
+					email: null,
+					name: null,
+					user_id: null,
+				};
 			});
 	},
 });
